@@ -9,7 +9,6 @@ rr = 6; // rayon roulement bille
 rrz = 19; // roulement long
 
 
-
 supx = 80;
 supz = 20;
 
@@ -58,20 +57,22 @@ module rouloum(){
 }
 
 module tub(){
+	j = 0.2;
 	difference(){
 		translate([0,0,-1]) cylinder(r=rbig+epr+1, h=supz+1);
-		translate([0,0,-1]) cylinder(r=rbig, h=supz+2);
+		translate([0,0,-1]) cylinder(r=rbig+j, h=supz+2);
 	}
 }
 
 module colo(){
 	epcolz = 10;
 	eprcol = 3.7;
+	j = 0.2; // léger jeux resserrage colonnes;
 	//
 	for(g=[0:3]){
-		rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
+		rotate([0,0,120*g]) translate([0,rbig-rr-1-j, 0]) difference(){
 			union(){
-				translate([0,0,0])  cylinder(r=rc+eprcol, h=epcolz);
+				translate([0,0,0])  #cylinder(r=rc+eprcol, h=epcolz);
 				// plot
 				rotate([0,0,-7])
 					translate([rc,-eprcol,0]) cube([eprcol+2, eprcol*2, epcolz]);
@@ -109,12 +110,11 @@ module colo(){
 	}
 }
 
-//rotate([180,0,0]) rouloum();
-//tub();
+rotate([180,0,0]) rouloum();
 
 //colo();
 //translate([0,0,11]) rouloum();
 
-colo();
-translate([0,40,0]) colo();
+//colo();
+//translate([0,40,0]) colo();
 
