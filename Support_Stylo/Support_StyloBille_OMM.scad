@@ -42,16 +42,17 @@ module sercol(ro){
 }
 
 module colonnes(){
-	dx = 14;
-	dy = 6;
-	dxx = 12;
+	dx = 15; // distance entre vis et centre vide écrou
+	dy = 5; // profondeur vide écrou
+	ddx = 10; // largeur vide écrou
+	
     difference(){
         cube([ex+sps+ex, ep, ez]);
         translate([ex, -1, ez/2]) rotate([-90,0,0]) cylinder(r=rv, h=ep+2);
         translate([ex+sps, -1, ez/2]) rotate([-90,0,0]) cylinder(r=rv, h=ep+2);
-		//
-		translate([dx, -1, -1]) cube([dxx, dy+1, ez+2]);
-		translate([ex+sps+ex-dx-dxx, -1, -1]) cube([dxx, dy+1, ez+2]);
+		// cubes vide ecrou
+		translate([ex+dx-ddx/2, -1, -1]) cube([ddx, dy+1, ez+2]);
+		translate([ex+sps-dx-ddx/2, -1, -1]) cube([ddx, dy+1, ez+2]);
 		
     }
     translate([ex+sps/2-spc/2-ep/2, ep,0]) cube([ep,dco-ep-rr-1,ez]);
