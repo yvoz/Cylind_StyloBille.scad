@@ -100,7 +100,7 @@ module plaquevis(){
 	}
 }
 
-//translate([0,0,ez]) stylo();				// Mobile
+//translate([0,0,0]) stylo();				// Mobile
 //translate([0,30,0]) stylo();
 //plaquevis(); 
 translate([0,0,0]) colonnes();			// Fixe
