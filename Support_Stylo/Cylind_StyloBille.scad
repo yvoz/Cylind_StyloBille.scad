@@ -64,23 +64,24 @@ module tub(){
 	}
 }
 
-module colo(){
+module colo(qt=2){ // qt-1 de colonnes serrées
 	epcolz = 10;
 	eprcol = 3.7;
 	j = 0.1; // léger jeux resserrage colonnes;
-	//
-	for(g=[0:3]){
+	// tenues colonnes
+	//qt = 0;
+	for(g=[0:qt]){
 		rotate([0,0,120*g]) translate([0,rbig-rr-1-j, 0]) difference(){
 			union(){
-				translate([0,0,0])  #cylinder(r=rc+eprcol, h=epcolz);
+				translate([0,0,0]) cylinder(r=rc+eprcol, h=epcolz);
 				// plot
 				rotate([0,0,-7])
 					translate([rc,-eprcol,0]) cube([eprcol+2, eprcol*2, epcolz]);
 			}
 			rotate([0,0,-7]){
-				translate([0,0,-1])  cylinder(r=rc+0.2, h=epcolz+2);
+				translate([0,0,-1]) cylinder(r=rc+0.2, h=epcolz+2);
 				// fente
-				translate([2, -1, -1]) cube([eprcol*2, 2, epcolz+2]);
+				translate([2, -1.5/2, -1]) cube([eprcol*2, 1.5, epcolz+2]);
 				// vis serrages
 				translate([rc+2.5, eprcol*2, epcolz/2]) rotate([90,0,0]) cylinder(r=1.6, h=eprcol*4, $fn=9);
 				translate([rc+2.5, eprcol, epcolz/2]) rotate([-90,0,0]) cylinder(r=m3r+0.4, h=m3h+0.6, $fn=6);
@@ -89,12 +90,40 @@ module colo(){
 				
 		}
 	}
-	//
+	if(qt < 2){ // colonnes libres restantes
+		for(g=[qt+1:2]){
+			rotate([0,0,120*g]) translate([0,rc+eprcol+rsty, 0]) difference(){
+				hull(){
+					translate([0,0,0])  cylinder(r=rc+eprcol, h=epcolz);
+					translate([0,3,0])  cylinder(r=rc+eprcol, h=epcolz);
+					// plot
+					//rotate([0,0,-7])
+					//	translate([rc,-eprcol,0]) cube([eprcol+2, eprcol*2, epcolz]);
+				}
+				hull(){
+					translate([0,0,-1])  cylinder(r=rc+0.3, h=epcolz+2);
+					translate([0,3,-1])  cylinder(r=rc+0.3, h=epcolz+2);
+				}
+				/*
+				rotate([0,0,-7]){
+				
+					// fente
+					translate([2, -1, -1]) cube([eprcol*2, 2, epcolz+2]);
+					// vis serrages
+					translate([rc+2.5, eprcol*2, epcolz/2]) rotate([90,0,0]) cylinder(r=1.6, h=eprcol*4, $fn=9);
+					translate([rc+2.5, eprcol, epcolz/2]) rotate([-90,0,0]) cylinder(r=m3r+0.4, h=m3h+0.6, $fn=6);
+					translate([rc+2.5, -eprcol, epcolz/2]) rotate([90,0,0]) cylinder(r=m3r+0.4, h=m3h+0.6, $fn=6);
+				}
+				*/	
+			}
+		}
+	}
+	// centre tenue stylo
 	difference(){
 		cylinder(r=rsty+eprcol, h=epcolz);
 		translate([0,0,-1]) cylinder(r=rsty, h=epcolz+2);
 		//
-		for(g=[0:3]){
+		for(g=[0:qt]){
 			rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]){
 				rotate([0,0,-7]){
 					translate([rc+2.5, eprcol*2, epcolz/2]) rotate([90,0,0]) cylinder(r=1.6, h=eprcol*4+2, $fn=9);
@@ -115,6 +144,6 @@ module colo(){
 //colo();
 //translate([0,0,11]) rouloum();
 
-colo();
-translate([0,40,0]) colo();
+colo(2);
+translate([0,40,0]) colo(0);
 
