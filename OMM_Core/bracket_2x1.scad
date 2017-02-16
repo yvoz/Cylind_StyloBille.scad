@@ -45,13 +45,18 @@ rHole = 2.6;
 
 use<Cubo.scad>;
 
-translate([0,0,0]) translate([lx/2, ly/2, lx/2]) 90BracketMin();
-translate([0,20,0]) translate([lx/2, ly/2, lx/2]) 90BracketMin();
-difference(){
-	translate([0,-lx,0]) cube([lx,lx,ep]);
-	 translate([lx/2, -ly/2, -1]) rotate([0,0, 0]) cylinder(r=rHole, h=10);
+module bracket_2x1(){
+	translate([0,0,0]) translate([lx/2, ly/2, lx/2]) 90BracketMin();
+	translate([0,20,0]) translate([lx/2, ly/2, lx/2]) 90BracketMin();
+	difference(){
+		translate([0,-lx,0]) cube([lx,lx,ep]);
+		 translate([lx/2, -ly/2, -1]) rotate([0,0, 0]) cylinder(r=rHole, h=10);
+	}
+	translate([0,-ep,0]) cubo([ep,ep,lz], [12], ep);
+	translate([-ly,0,0]) rotate([0,0,-90]) translate([lx/2, ly/2, lx/2]) 90BracketMin();
 }
-translate([0,-ep,0]) cubo([ep,ep,lz], [12], ep);
-translate([-ly,0,0]) rotate([0,0,-90]) translate([lx/2, ly/2, lx/2]) 90BracketMin();
+
+bracket_2x1();
+translate([50,0,0]) mirror([1,0,0]) bracket_2x1();
 
 
