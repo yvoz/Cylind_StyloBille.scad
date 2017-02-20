@@ -144,6 +144,6 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 //colo();
 //translate([0,0,11]) rouloum();
 
-colo(2);
-translate([0,40,0]) colo(0);
+colo(2); // bas
+//translate([0,40,0]) colo(0);
 
