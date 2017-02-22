@@ -49,4 +49,9 @@ difference() {
 	#translate([-55,0,0])cube([40,5,12], center=true);
 
 	#translate([-65,0,0])rotate([90,0,0])cylinder(h=20, r=2.5, $fn=50, center=true); // axe serrage
+	
+	// guide tourne vis
+	rotate([0,90,0])translate([0,largtout/2,-30])#cylinder(h=35, r=3, $fn=50, center=true);
+	rotate([0,90,0])translate([0,-(largtout/2),-30])#cylinder(h=35, r=3, $fn=50, center=true);
+	
 }
