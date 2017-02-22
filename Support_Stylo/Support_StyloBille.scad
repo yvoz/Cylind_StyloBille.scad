@@ -92,4 +92,4 @@ module plaquevis(){
 //translate([0,30,0]) stylo();
 //plaquevis(); 
 translate([0,0,0]) colonnes();
-translate([0,40,0]) colonnes();
+//translate([0,40,0]) colonnes();

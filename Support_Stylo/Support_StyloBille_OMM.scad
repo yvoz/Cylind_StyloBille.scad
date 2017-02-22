@@ -42,7 +42,7 @@ module sercol(ro){
 }
 
 module colonnes(){
-	dx = 15; // distance entre vis et centre vide écrou
+	dx = 14; //15; // distance entre vis et centre vide écrou
 	dy = 5; // profondeur vide écrou
 	ddx = 10; // largeur vide écrou
 	
@@ -100,8 +100,8 @@ module plaquevis(){
 	}
 }
 
-//translate([0,0,0]) stylo();				// Mobile
+translate([0,0,0]) stylo();				// Mobile
 //translate([0,30,0]) stylo();
 //plaquevis(); 
-translate([0,0,0]) colonnes();			// Fixe
-translate([0,45,0]) colonnes();
+//translate([0,0,0]) colonnes();			// Fixe
+//translate([0,45,0]) colonnes();
