@@ -1,4 +1,8 @@
 
+// Cylind_StyloBille.scad
+// Tous droits réservés www.mon-fablab.fr - 2017
+// Licence GPLv3 - usage NON COMMERCIAL uniquement
+// Contributeurs : X. HINAULT, Y. LE GAL
 
 rsty = 6; // rayon stylo
 rbig = 43/2;  // rayon cylindre de serrage 

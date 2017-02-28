@@ -1,4 +1,9 @@
 
+// Support_StyloBille_OMMPlus.scad
+// Tous droits réservés www.mon-fablab.fr - 2017
+// Licence GPLv3 - usage NON COMMERCIAL uniquement
+// Contributeurs : X. HINAULT, Y. LE GAL
+
 $fn = 12;
 
 ep = 8; // epaisseur

@@ -3,6 +3,9 @@ module 90BracketMin(){
 
 // 90 degree bracket
 // modifié par X. HINAULT - www.mon-club-elec.fr
+// Tous droits réservés www.mon-fablab.fr - 2017
+// Licence GPLv3 - usage NON COMMERCIAL uniquement
+	
 
 $fn = 25;
 length = 22.5;

@@ -1,4 +1,9 @@
 
+// Support_EndY.scad
+// Tous droits réservés www.mon-fablab.fr - 2017
+// Licence GPLv3 - usage NON COMMERCIAL uniquement
+// Contributeurs : X. HINAULT, Y. LE GAL
+
 module 90BracketMin(){
 
 // 90 degree bracket
