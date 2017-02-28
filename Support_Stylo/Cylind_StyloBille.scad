@@ -49,7 +49,7 @@ module rouloum(){
 		union(){
 			for(g=[0:3]){
 				rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
-					cylinder(r=rr+eprr, h=supz+epz);
+					#cylinder(r=rr+eprr, h=supz+epz);
 					translate([0,0,-1])  cylinder(r=rr+0.1, h=supz+epz+2);
 					translate([-0.5,-rr-eprr-1,-1])  cube([1, eprr+2, supz+epz+2]);
 				}
