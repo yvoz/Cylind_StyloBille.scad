@@ -43,13 +43,13 @@ module rouloum(){
 				translate([0,0,-1]) cylinder(r=rc+2, h=supz+epz+2);
 			}
 		}
-		
 	}
+	
 	difference(){
 		union(){
 			for(g=[0:3]){
 				rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
-					#cylinder(r=rr+eprr, h=supz+epz);
+					cylinder(r=rr+eprr, h=supz+epz);
 					translate([0,0,-1])  cylinder(r=rr+0.1, h=supz+epz+2);
 					translate([-0.5,-rr-eprr-1,-1])  cube([1, eprr+2, supz+epz+2]);
 				}
@@ -57,7 +57,41 @@ module rouloum(){
 		}
 		tub();
 	}
+	
+	// vis jointures
+	for(g=[0:3]){
+		rotate([0,0,120*g+60]) translate([0,rbig-epr-m3r-0.4, 0]) difference(){
+			translate([0,0,supz]) cylinder(r=epr*1.6, h=epz);
+			translate([0,0,supz-1]) cylinder(r=1.7, h=epz+2);
+		}
+	}
 }
+
+module roulsup(){
+		// vis jointures
+	for(g=[0:3]){
+		rotate([0,0,120*g+60]) translate([0,rbig-epr-m3r-0.4, 0]) difference(){
+			translate([0,0,supz]) cylinder(r=epr*1.6, h=epz);
+			translate([0,0,supz-1]) cylinder(r=1.7, h=epz+2);
+		}
+	}
+	
+	for(g=[0:3]){
+		rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
+			cylinder(r=rr+eprr, h=supz+epz);
+			translate([0,0,-1])  cylinder(r=rr+0.1, h=supz+epz+2);
+			translate([-0.5,-rr-eprr-1,-1])  cube([1, eprr+2, supz+epz+2]);
+		}
+	}
+	
+	translate([0,0,supz]) difference(){
+		cylinder(r=rbig+epr, h=epz);
+		translate([0,0,-1]) cylinder(r=rbig-1.5, h=supz+epz+2);
+	}
+	
+}
+
+
 
 module tub(){
 	j = 0.1;
@@ -145,11 +179,14 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 }
 
 //colo();
-translate([0,0,11]) rouloum();
+//translate([0,0,-supz]) rouloum();
+
 
 //colo(2); // bas
 //translate([0,40,0]) colo(0);
 
 // Pour impression
 //rotate([180,0,0]) rouloum();
+
+rotate([180,0,0]) roulsup();
 
