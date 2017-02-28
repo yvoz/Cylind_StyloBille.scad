@@ -3,7 +3,7 @@ $fn = 12;
 
 pro = 20; // largeur du profil alu
 
-lx = 20; // decalage x
+lx = 20-2; // decalage x
 ly = 2; // decalage y
 lay = 20; // long oblong
 
