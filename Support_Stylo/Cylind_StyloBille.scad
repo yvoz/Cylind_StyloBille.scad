@@ -24,7 +24,7 @@ include <Hexa.scad>;
 //use<Hexa.scad>;
 
 
-module rouloum(){
+module roulinf(){
 	difference(){
 		union(){
 			cylinder(r=rbig+epr, h=supz+epz);
@@ -179,14 +179,14 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 }
 
 //colo();
-//translate([0,0,-supz]) rouloum();
+//translate([0,0,-supz]) roulinf();
 
 
 //colo(2); // bas
 //translate([0,40,0]) colo(0);
 
 // Pour impression
-//rotate([180,0,0]) rouloum();
+rotate([180,0,0]) roulinf();
 
-rotate([180,0,0]) roulsup();
+//rotate([180,0,0]) roulsup();
 
