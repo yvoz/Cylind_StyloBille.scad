@@ -62,7 +62,7 @@ module roulinf(){
 	for(g=[0:3]){
 		rotate([0,0,120*g+60]) translate([0,rbig-epr-m3r-0.4, 0]) difference(){
 			translate([0,0,supz]) cylinder(r=epr*1.6, h=epz);
-			translate([0,0,supz-1]) cylinder(r=1.7, h=epz+2);
+			translate([0,0,supz-1]) cylinder(r=1.9, h=epz+2, $fn=12);
 		}
 	}
 }
@@ -72,7 +72,7 @@ module roulsup(){
 	for(g=[0:3]){
 		rotate([0,0,120*g+60]) translate([0,rbig-epr-m3r-0.4, 0]) difference(){
 			translate([0,0,supz]) cylinder(r=epr*1.6, h=epz);
-			translate([0,0,supz-1]) cylinder(r=1.7, h=epz+2);
+			translate([0,0,supz-1]) cylinder(r=1.8, h=epz+2, $fn=12);
 		}
 	}
 	
@@ -80,7 +80,8 @@ module roulsup(){
 		rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
 			cylinder(r=rr+eprr, h=supz+epz);
 			translate([0,0,-1])  cylinder(r=rr+0.1, h=supz+epz+2);
-			translate([-0.5,-rr-eprr-1,-1])  cube([1, eprr+2, supz+epz+2]);
+			translate([-0.5,-rr-eprr-1,-1])  #cube([1, eprr+2, supz+epz+2]);
+			if(g==0) translate([0,-rr-eprr,0])  #sphere(r=2); 
 		}
 	}
 	
@@ -118,7 +119,7 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 					translate([rc,-eprcol,0]) cube([eprcol+2, eprcol*2, epcolz]);
 			}
 			rotate([0,0,-7]){
-				translate([0,0,-1]) cylinder(r=rc+0.2, h=epcolz+2);
+				translate([0,0,-70]) #cylinder(r=rc+0.2, h=epcolz+2+70);
 				// fente
 				translate([2, -1.5/2, -1]) cube([eprcol*2, 1.5, epcolz+2]);
 				// vis serrages
@@ -178,15 +179,11 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 	}
 }
 
-//colo();
-//translate([0,0,-supz]) roulinf();
 
 
-//colo(2); // bas
-//translate([0,40,0]) colo(0);
+//translate([0,0,60]) colo();
 
-// Pour impression
-rotate([180,0,0]) roulinf();
+translate([0,0,30]) roulsup();
 
-//rotate([180,0,0]) roulsup();
+//roulinf();
 
