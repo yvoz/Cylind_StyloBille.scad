@@ -9,7 +9,7 @@ rbig = 43/2;  // rayon cylindre de serrage
 
 rv = 2.5 + 0.1; // rayon vis
 rc = 3; // rayon colonnes
-rr = 6; // rayon roulement bille 
+rr = 6; // rayon douilles a billes 
 rrz = 19; // roulement long
 
 
@@ -22,6 +22,8 @@ epz = 3;
 
 include <Hexa.scad>;
 //use<Hexa.scad>;
+
+k = 0.3; // jeux douille a billes
 
 
 module roulinf(){
@@ -36,7 +38,8 @@ module roulinf(){
 		//
 		for(g=[0:3]){
 			rotate([0,0,120*g]) translate([0,rbig-rr-1, 0])  
-			translate([0,0,-1])  cylinder(r=rr+0.1, h=supz+1);
+			translate([0,0,-1])  cylinder(r=rr+k, h=supz+1);
+			
 		}
 		for(g=[0:3]){
 			rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
@@ -50,8 +53,10 @@ module roulinf(){
 			for(g=[0:3]){
 				rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
 					cylinder(r=rr+eprr, h=supz+epz);
-					translate([0,0,-1])  cylinder(r=rr+0.1, h=supz+epz+2);
+					translate([0,0,-1])  cylinder(r=rr+k, h=supz+epz+2);
 					translate([-0.5,-rr-eprr-1,-1])  cube([1, eprr+2, supz+epz+2]);
+					// ------>
+					if(g==1) rotate([0,0,45]) translate([-0.5,-rr-eprr-1,-1]) cube([1, eprr+2, 2]);
 				}
 			}
 		}
@@ -70,7 +75,7 @@ module roulinf(){
 module roulsup(){
 		// vis jointures
 	for(g=[0:3]){
-		rotate([0,0,120*g+60]) translate([0,rbig-epr-m3r-0.4, 0]) difference(){
+		rotate([0,0,120*g+60]) translate([0,rbig-epr-m3r-0.4, -supz]) difference(){
 			translate([0,0,supz]) cylinder(r=epr*1.6, h=epz);
 			translate([0,0,supz-1]) cylinder(r=1.8, h=epz+2, $fn=12);
 		}
@@ -79,13 +84,14 @@ module roulsup(){
 	for(g=[0:3]){
 		rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
 			cylinder(r=rr+eprr, h=supz+epz);
-			translate([0,0,-1])  cylinder(r=rr+0.1, h=supz+epz+2);
-			translate([-0.5,-rr-eprr-1,-1])  #cube([1, eprr+2, supz+epz+2]);
-			if(g==0) translate([0,-rr-eprr,0])  #sphere(r=2); 
+			translate([0,0,-1])  cylinder(r=rr+k, h=supz+epz+2);
+			translate([-0.5,-rr-eprr-1,-1])  cube([1, eprr+2, supz+epz+2]);
+			// ------>
+			if(g==1) rotate([0,0,45]) translate([-0.5,-rr-eprr-1,supz+2]) cube([1, eprr+2, 2]);
 		}
 	}
 	
-	translate([0,0,supz]) difference(){
+	translate([0,0,0]) difference(){
 		cylinder(r=rbig+epr, h=epz);
 		translate([0,0,-1]) cylinder(r=rbig-1.5, h=supz+epz+2);
 	}
@@ -95,10 +101,10 @@ module roulsup(){
 
 
 module tub(){
-	j = 0.1;
+	i = 0.1;
 	difference(){
 		translate([0,0,-1]) cylinder(r=rbig+epr+1, h=supz+1);
-		translate([0,0,-1]) cylinder(r=rbig+j, h=supz+2);
+		translate([0,0,-1]) cylinder(r=rbig+i, h=supz+2);
 	}
 }
 
@@ -118,10 +124,13 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 				rotate([0,0,-7])
 					translate([rc,-eprcol,0]) cube([eprcol+2, eprcol*2, epcolz]);
 			}
+			
 			rotate([0,0,-7]){
-				translate([0,0,-70]) #cylinder(r=rc+0.2, h=epcolz+2+70);
+				translate([0,0,-70]) cylinder(r=rc+0.2, h=epcolz+2+70); // cylindres colonnes
 				// fente
 				translate([2, -1.5/2, -1]) cube([eprcol*2, 1.5, epcolz+2]);
+				// -------->
+				if(g==1) rotate([0,0,-45+7]) translate([2, -1.5/2, epcolz-1]) cube([eprcol+1, 1, 2]);
 				// vis serrages
 				translate([rc+2.5, eprcol*2, epcolz/2]) rotate([90,0,0]) cylinder(r=1.6, h=eprcol*4, $fn=9);
 				translate([rc+2.5, eprcol, epcolz/2]) rotate([-90,0,0]) cylinder(r=m3r+0.4, h=m3h+0.6, $fn=6);
@@ -130,6 +139,7 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 				
 		}
 	}
+	
 	if(qt < 2){ // colonnes libres restantes
 		for(g=[qt+1:2]){
 			rotate([0,0,120*g]) translate([0,rc+eprcol+rsty, 0]) difference(){
@@ -181,9 +191,9 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 
 
 
-//translate([0,0,60]) colo();
+translate([0,0,60]) colo();
 
 translate([0,0,30]) roulsup();
 
-//roulinf();
+rotate([0,180,0]) roulinf();
 
