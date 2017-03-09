@@ -38,7 +38,7 @@ module roulinf(){
 		//
 		for(g=[0:3]){
 			rotate([0,0,120*g]) translate([0,rbig-rr-1, 0])  
-			translate([0,0,-1])  cylinder(r=rr+k, h=supz+1);
+			translate([0,0,-1])  cylinder(r=rr+k, h=supz+epz+2);
 			
 		}
 		for(g=[0:3]){
@@ -93,7 +93,12 @@ module roulsup(){
 	
 	translate([0,0,0]) difference(){
 		cylinder(r=rbig+epr, h=epz);
-		translate([0,0,-1]) cylinder(r=rbig-1.5, h=supz+epz+2);
+		translate([0,0,-1]) cylinder(r=rbig-1.5-1, h=supz+epz+2);
+		for(g=[0:3]){
+			rotate([0,0,120*g]) translate([0,rbig-rr-1, 0]) difference(){
+				translate([0,0,-1])  cylinder(r=rr+k, h=supz+epz+2);
+			}
+		}
 	}
 	
 }
@@ -191,9 +196,10 @@ module colo(qt=2){ // qt-1 de colonnes serrées
 
 
 
-translate([0,0,60]) colo();
+//translate([0,0,60]) colo();
 
 translate([0,0,30]) roulsup();
 
-rotate([0,180,0]) roulinf();
+//rotate([0,180,0]) 
+//	roulinf();
 
