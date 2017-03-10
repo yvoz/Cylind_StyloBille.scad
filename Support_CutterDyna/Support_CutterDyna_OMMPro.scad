@@ -1,4 +1,8 @@
 
+// Support_CutterDyna_OMMPro.scad
+// Tous droits réservés www.mon-fablab.fr - 2017
+// Licence GPLv3 - usage NON COMMERCIAL uniquement
+// Contributeurs : X. HINAULT, Y. LE GAL
 
 include <Hexa.scad>;
 use<Cubo.scad>;
