@@ -23,7 +23,7 @@ epz = 3;
 include <Hexa.scad>;
 //use<Hexa.scad>;
 
-k = 0.3; // jeux douille a billes
+k = 0.33; // jeux douille a billes
 
 
 module roulinf(){
