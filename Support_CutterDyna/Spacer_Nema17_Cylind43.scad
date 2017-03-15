@@ -3,9 +3,9 @@
 spaz = 55; // distance surface Base / Nema
 
 rbas = 44/2; // rayon espace de broche
-rnem = 29/2; // rayon espace du coupleur 24/2 mini
+rnem = 32/2; // rayon espace du coupleur 24/2 mini
 
-rb = 3;
+rb = 3; // vis base
 rn = 1.5;
 rtv = 4; // rayon tourne vis
 
@@ -20,14 +20,15 @@ epz = 14; // epaisseur Z
 j = 0.2;
 k = 1;
 
+use <Cubo.scad>;
 
 difference(){
 	union(){
-		cube([epx+bax+epx, epx+bay+epx, epz]);
-		translate([epx+bax/2, epx+bay/2, 0]) cylinder(r=rbas+epx, h=spaz);
+		cubo([epx+bax+epx, epx+bay+epx, epz], [9,10,11,12], 5);
+		translate([epx+bax/2, epx+bay/2, 0]) cylinder(r=rbas+epx+1, h=spaz);
 	}
 	
-	// truncate
+	// truncate 
 	translate([-bax, 0, epz]) cube([bax*4, epx*2, spaz]);
 	translate([-bax, epx+bay+epx-epx*2, epz]) cube([bax*4, epx*2, spaz]);
 	//translate([epx+bax/2, 0, epz*2]) {
@@ -57,6 +58,12 @@ difference(){
 			cylinder(r=rtv, h=spaz-epz, $fn = 12);
 		}
 	}
+	
+	// percage fixation base
+	translate([epx, epx, -1]) cylinder(r=rb+0.2, h=spaz);
+	translate([epx+bax, epx, -1]) cylinder(r=rb+0.2, h=spaz);
+	translate([epx, epx+bay, -1]) cylinder(r=rb+0.2, h=spaz);
+	translate([epx+bax, epx+bay, -1]) cylinder(r=rb+0.2, h=spaz);
 	
 	
 }
