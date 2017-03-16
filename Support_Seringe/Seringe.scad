@@ -59,6 +59,7 @@ translate([0,40,0]) difference() {
 	translate([-50,-50,-50]) cube([200,120,50]);
 }
 
+/*
 translate([0,40*2,0]) difference() {
 	rotate([0,90,0]) pist();
 	translate([-50,-50,-50]) cube([200,120,50]);
@@ -68,3 +69,4 @@ translate([0,40*3,0]) difference() {
 	rotate([0,90,0]) corps();
 	translate([-50,-50,-50]) cube([200,120,50]);
 }
+*/
