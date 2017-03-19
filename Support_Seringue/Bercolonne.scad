@@ -55,11 +55,14 @@ module couv() translate([0,0,nivz]) difference(){
 }
 
 berceau();
-couv();
+//couv();
 
-translate([0, ycolo-epy, 0]) {
-	berceau();
-	couv();
-}
+//translate([0, ycolo-epy, 0]) {
+//	berceau();
+//	couv();
+//}
+
+// print 
+translate([0,-10,nivz+rbag+epx]) rotate([180,0,0]) couv();
 
 

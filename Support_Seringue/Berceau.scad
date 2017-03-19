@@ -50,10 +50,11 @@ module couv() translate([0,0,nivz]) difference(){
 
 }
 
-berceau();
-couv();
+//berceau();
+// couv();
 
-//translate([])
+// print
+translate([]) rotate([180,0,0]) couv();
 
 
 
