@@ -4,13 +4,13 @@ epz = 5;
 rdou = 15/2;
 ldou = 24;
 epx = 4;
-epf = 1;
+epf = 2;
 
 esp = 35;
 
 rvd = 5/2;
 
-cox = 10;
+cox = 11;
 coy = epx+3.5;
 coz = 10;
 
@@ -29,7 +29,7 @@ difference(){
 		
 		
 		// cube collier
-		translate([-cox/2, rdou+0.3, epz+ldou-coz]) cubo([cox,coy,coz], [4], 5);
+		translate([-cox/2, rdou+0.3, epz+ldou-coz]) cubo([cox,coy,coz], [3,4], 3);
 		
 	}
 	// douille
