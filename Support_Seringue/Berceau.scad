@@ -16,14 +16,14 @@ module berceau() difference(){
 	
 	// vis serrage 
 	translate([epx+rvs, epy/2, -1]) {
-		cylinder(r=rvs+0.2, h=nivz+2);
-		translate([0,0,15]) cylinder(r=m5r+0.5, h=m5h+0.4, $fn=6);
-		translate([-m5r,0,15]) cylinder(r=m5r+0.5, h=m5h+0.4, $fn=6);
+		cylinder(r=rvs+0.3, h=nivz+2);
+		translate([0,0,15]) cylinder(r=m5r+0.7, h=m5h+0.3, $fn=6);
+		translate([-m5r,0,15]) cylinder(r=m5r+0.7, h=m5h+0.3, $fn=6);
 	}
 	translate([epx+rvs*2+epx+rbag*2+epx+rvs, epy/2, -1]) {
-		cylinder(r=rvs+0.2, h=nivz+2);
-		translate([0,0,15]) cylinder(r=m5r+0.5, h=m5h+0.4, $fn=6);
-		translate([+m5r,0,15]) cylinder(r=m5r+0.5, h=m5h+0.4, $fn=6);
+		cylinder(r=rvs+0.3, h=nivz+2);
+		translate([0,0,15]) cylinder(r=m5r+0.7, h=m5h+0.3, $fn=6);
+		translate([+m5r,0,15]) cylinder(r=m5r+0.7, h=m5h+0.3, $fn=6);
 	}
 	
 	// vis fixa
@@ -45,8 +45,8 @@ module couv() translate([0,0,nivz]) difference(){
 	// corps seringue
 	translate([epx+rvs*2+epx+rbag, -1, 0]) rotate([-90,0,0]) cylinder(r=rbag, h=epy+2);
 	// vis serrage 
-	translate([epx+rvs, epy/2, -1]) cylinder(r=rvs+0.2, h=nivz+2);
-	translate([epx+rvs*2+epx+rbag*2+epx+rvs, epy/2, -1]) cylinder(r=rvs+0.2, h=nivz+2);
+	translate([epx+rvs, epy/2, -1]) cylinder(r=rvs+0.3, h=nivz+2);
+	translate([epx+rvs*2+epx+rbag*2+epx+rvs, epy/2, -1]) cylinder(r=rvs+0.3, h=nivz+2);
 
 }
 

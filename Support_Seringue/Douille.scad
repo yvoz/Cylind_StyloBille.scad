@@ -2,7 +2,7 @@
 
 epz = 5;
 rdou = 15/2;
-ldou = 24;
+ldou = 24 - 8; // - epais plc
 epx = 4;
 epf = 2;
 
@@ -35,10 +35,10 @@ difference(){
 	// douille
 	translate([0, 0, -1]) cylinder(r=rdou+0.3, h=epz+ldou+2);
 	// vis
-	translate([-esp/2, 0, -1]) cylinder(r=rvd+0.2, h=epz+2);
-	translate([esp/2, 0, -1]) cylinder(r=rvd+0.2, h=epz+2);
+	translate([-esp/2, 0, -1]) cylinder(r=rvd+0.2, h=epz+2, $fn=16);
+	translate([esp/2, 0, -1]) cylinder(r=rvd+0.2, h=epz+2, $fn=16);
 	// fente
-	translate([-epf/2, 0, epz]) cube([epf, rdou+epx+10, ldou+1]);
+	translate([-epf/2, 0, -1]) cube([epf, rdou+epx+10, ldou+epz+2]);
 	
 	// vis serrage
 	translate([-cox, rdou+epx, epz+ldou-4]) rotate([0,90,0]) cylinder(r=1.5+0.2, h=20, $fn=3*4);
