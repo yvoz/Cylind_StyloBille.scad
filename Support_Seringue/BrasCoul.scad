@@ -1,4 +1,7 @@
-
+// Seringue BrasCoul.scad
+// Tous droits réservés www.mon-fablab.fr - 2017
+// Licence GPLv3 - usage NON COMMERCIAL uniquement
+// Contributeurs : X. HINAULT, Y. LE GAL
 
 ep = 2;
 rvd = 5/2;
