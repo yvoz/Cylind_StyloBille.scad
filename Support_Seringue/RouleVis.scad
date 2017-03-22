@@ -11,7 +11,11 @@ epy = 8;
 
 use <Cubo.scad>;
 
-module roulvis(){
+function roul_bov() = epx;
+function roul_spv() = esp;
+function roul_y() = epy*3;
+
+module roulevis(){
 	difference() {
 		cubo([epx+esp+epx, epy, nivz+rrou+5], [7,8], 15);
 		translate([epx+esp/2, -1, nivz]) rotate([-90,0,0]) cylinder(r=rrou+0.5, h=epy+2);
@@ -27,4 +31,4 @@ module roulvis(){
 	}
 }
 
-rotate([90,0,0]) roulvis();
+rotate([90,0,0]) roulevis();

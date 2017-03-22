@@ -11,7 +11,7 @@ ycolo = 100;
 
 include <Hexa.scad>;
 
-module berceau() difference(){
+module bercolonne() difference(){
 	cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx, epy, nivz]);
 	translate([epx+rvs*2+epx+rbag, -1, nivz]) rotate([-90,0,0]) cylinder(r=rbag, h=epy+2); // corps seringue
 	
@@ -42,7 +42,7 @@ module berceau() difference(){
 	*/
 }
 
-module couv() translate([0,0,nivz]) difference(){
+module bercolcouv() translate([0,0,nivz]) difference(){
 	cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx, epy, rbag+epx]);
 	// tranche de jeux
 	translate([-1,-1,0]) cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx+2, epy+2, 0.5]);
@@ -54,8 +54,8 @@ module couv() translate([0,0,nivz]) difference(){
 
 }
 
-berceau();
-//couv();
+bercolonne();
+bercolcouv();
 
 //translate([0, ycolo-epy, 0]) {
 //	berceau();
@@ -63,6 +63,6 @@ berceau();
 //}
 
 // print 
-translate([0,-10,nivz+rbag+epx]) rotate([180,0,0]) couv();
+//translate([0,-10,nivz+rbag+epx]) rotate([180,0,0]) bercolcouv();
 
 
