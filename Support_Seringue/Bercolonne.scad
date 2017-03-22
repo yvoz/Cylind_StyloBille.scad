@@ -45,7 +45,7 @@ module bercolonne() difference(){
 module bercolcouv() translate([0,0,nivz]) difference(){
 	cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx, epy, rbag+epx]);
 	// tranche de jeux
-	translate([-1,-1,0]) cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx+2, epy+2, 0.5]);
+	translate([-1,-1,0]) cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx+2, epy+2, 0.7]);
 	// corps seringue
 	translate([epx+rvs*2+epx+rbag, -1, 0]) rotate([-90,0,0]) cylinder(r=rbag, h=epy+2);
 	// vis serrage 
@@ -54,9 +54,10 @@ module bercolcouv() translate([0,0,nivz]) difference(){
 
 }
 
-bercolonne();
-bercolcouv();
-
+rotate([90,0,0]){
+	bercolonne();
+	translate([0, 0, 5]) bercolcouv();
+}
 //translate([0, ycolo-epy, 0]) {
 //	berceau();
 //	couv();
