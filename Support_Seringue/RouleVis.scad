@@ -14,6 +14,8 @@ epy = 8;
 
 use <Cubo.scad>;
 
+function largeur_2() = epx+esp+epx;
+
 function roul_bov() = epx;
 function roul_spv() = esp;
 function roul_y() = epy*3;

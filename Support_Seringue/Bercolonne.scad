@@ -14,6 +14,8 @@ ycolo = 100;
 
 include <Hexa.scad>;
 
+function largeur_1() = epx+rvs*2+epx+rbag*2+epx+rvs*2+epx;
+
 module bercolonne() difference(){
 	cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx, epy, nivz]);
 	translate([epx+rvs*2+epx+rbag, -1, nivz]) rotate([-90,0,0]) cylinder(r=rbag, h=epy+2); // corps seringue

@@ -7,32 +7,72 @@ ep = 2;
 rvd = 5/2;
 
 epx = 4;
-esp = 35;
+vdou = 35; // douille billes : vis fixa <-> vis fixa
 
-esp1= 37.5;
-esp2 = 39;
+//esp1() colonne <-> vis moteur
+//esp2 vis moteur <-> tete seringue
+//esp3 tete seringue <-> colonne
 
+$fn= 4*12;
+
+use <Plaque.scad>;
+
+projection() 
 difference(){
 	hull(){
-		translate([-esp1, 0, 0]) cylinder(r=17, h=ep);
+		translate([-esp1(), 0, 0]) cylinder(r=26, h=ep);
 		
-		translate([-esp/2, 0, 0]) cylinder(r=rvd+epx, h=ep);
-		translate([0, 0, 0]) cylinder(r=rdou+epx*1.5, h=ep);
-		translate([+esp/2, 0, 0]) cylinder(r=rvd+epx, h=ep);
+		//translate([-esp/2, 0, 0]) cylinder(r=rvd+epx, h=ep);
+		//translate([0, 0, 0]) cylinder(r=15/2+epx*1.5, h=ep);
+		//translate([+esp/2, 0, 0]) cylinder(r=rvd+epx, h=ep);
 		
-		translate([esp2, 0, 0]) cylinder(r=20, h=ep);
+		translate([esp2()+esp3(), 0, 0]) cylinder(r=26, h=ep);
 	}
 	
 	// trous
 	translate([0,0,-1]){
-		translate([-esp1, 0, 0]) cylinder(r=5, h=ep+2);
 		
-		translate([-esp/2, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
-		translate([0, 0, 0]) cylinder(r=15/2+0.4, h=ep+2);
-		translate([esp/2, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+		// colonne
+		translate([-esp1(),0,0]){
+			hull(){
+				translate([-vdou/2-1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+				translate([-vdou/2+1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+			}
+			hull(){
+				translate([-1, 0, 0]) #cylinder(r=15/2+0.4, h=ep+2);
+				translate([+1, 0, 0]) #cylinder(r=15/2+0.4, h=ep+2);
+			}
+			hull(){
+				translate([vdou/2-1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+				translate([vdou/2+1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+			}
+		}
 		
-		translate([esp2-9, 0, 0]) cylinder(r=1.8, h=ep+2);
-		translate([esp2+9, 0, 0]) cylinder(r=1.8, h=ep+2);
+		// vis moteur
+		translate([0, 0, 0]) cylinder(r=5, h=ep+2);
+		translate([0, 0, 0])  for(g=[0:2]){
+			rotate([0,0,g*360/3]) translate([10,0,0])  cylinder(r=1.7, h=ep+2);
+		}
+		
+		// Tete seringue
+		translate([esp2()-9, 0, 0]) cylinder(r=1.8, h=ep+2);
+		translate([esp2()+9, 0, 0]) cylinder(r=1.8, h=ep+2);
+		
+		// colonne 2
+		translate([esp2()+esp3(),0,0]){
+			hull(){
+				translate([-vdou/2-1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+				translate([-vdou/2+1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+			}
+			hull(){
+				translate([-1, 0, 0]) #cylinder(r=15/2+0.4, h=ep+2);
+				translate([+1, 0, 0]) #cylinder(r=15/2+0.4, h=ep+2);
+			}
+			hull(){
+				translate([vdou/2-1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+				translate([vdou/2+1, 0, 0]) cylinder(r=rvd+0.3, h=ep+2);
+			}
+		}
 		
 	}
 	
