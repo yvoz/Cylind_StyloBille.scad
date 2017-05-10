@@ -19,9 +19,27 @@ pivz = 14; // hauteur axe rotate en alu
 
 include <Hexa.scad>;
 
+<<<<<<< HEAD
 function largeur_3() = epx+rvs*2+epx+rbag*2+epx+rvs*2+epx;
 
 module berceau(){ 
+=======
+module berceau() difference(){
+	cube([epx+rvs*2+epx+rbag*2+epx+rvs*2+epx, epy, nivz]);
+	translate([epx+rvs*2+epx+rbag, -1, nivz]) rotate([-90,0,0]) cylinder(r=rbag, h=epy+2); // corps seringue
+	
+	// vis serrage 
+	translate([epx+rvs, epy/2, -1]) {
+		cylinder(r=rvs+0.3, h=nivz+2);
+		translate([0,0,15]) cylinder(r=m5r+0.35, h=m5h+0.2, $fn=6);
+		translate([-m5r,0,15]) cylinder(r=m5r+0.35, h=m5h+0.2, $fn=6);
+	}
+	translate([epx+rvs*2+epx+rbag*2+epx+rvs, epy/2, -1]) {
+		cylinder(r=rvs+0.3, h=nivz+2);
+		translate([0,0,15]) cylinder(r=m5r+0.35, h=m5h+0.2, $fn=6);
+		translate([+m5r,0,15]) cylinder(r=m5r+0.35, h=m5h+0.2, $fn=6);
+	}
+>>>>>>> 9f00b0d9bc6af254a5b2ab3feab6f8d3f2584565
 	
 	difference(){
 		union(){
