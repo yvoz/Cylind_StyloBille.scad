@@ -7,12 +7,12 @@ ep = 3;
 spt = 18;
 
 rpis = 32/2;
-hpis = 3;
+hpis = 2;
 j = 0.7;
 
 
 
-difference(){
+mirror([1,0,0]) difference(){
 	
 		cylinder(r=rpis+j*4+ep, h=ep+2+j+hpis+j+ep);
 		echo(rpis+j*4+ep);
