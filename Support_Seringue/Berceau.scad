@@ -60,6 +60,8 @@ module berceau() {
 		}
 		// vis stop gond
 		translate([-1, epy/2, 5]) rotate([0,90,0]) cylinder(r=1.5, h=17);
+		// découpe stop gond
+		#cube([2.2, epy+1, pivz]);
 		
 	}
 	// cache support
@@ -109,6 +111,8 @@ module couv() translate([0,0,nivz]) {
 	
 	// cache support
 	//translate([0, 0, tj]) cube([0.3, epy, rbag+epx-tj]);
+	
+	
 
 }
 
@@ -117,7 +121,7 @@ module stopgond() {
 	difference(){
 		union(){
 			translate([-oe, 0, 0.5]) cube([oe,epy,pivz+rpiv-0.5]);
-			translate([0, 0, pivz-(rpiv+0.4)+0.5]) cube([1.5,epy,rpiv*2-0.4]);
+			//translate([0, 0, pivz-(rpiv+0.4)+0.5]) cube([1.5,epy,rpiv*2-0.4]);
 		}
 		translate([0, 0, pivz-(rpiv+0.4)]);
 		translate([-oe-1, epy/2, 5]) rotate([0,90,0]) cylinder(r=1.7, h=oe+3);
@@ -131,11 +135,11 @@ module stopgond() {
 }
 	
 
-//rotate([90,0,0]){
+rotate([90,0,0]){
 	//berceau();
 	//couv();
 	//stopgond();
-//}
+}
 
 rotate([0,-90,0]) stopgond();
 
