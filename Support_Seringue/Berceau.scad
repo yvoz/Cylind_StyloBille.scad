@@ -7,12 +7,16 @@ $fn = 8*4;
 
 nivz = 30;
 
-rbag = 27/2+1+0.5; // rayon des bagues base et tete
+//rbag = 27/2+1+0.5; // rayon des bagues base et tete
+rbag = 30/2;
+rbag = 23/2;
+echo(rbag);
 epx = 4; // epais entre vis et bord
 epy = 16; // epais bord a bord
 rvs = 5/2; // rayon vis serrage & fixa
 epxt = epx+rvs*2+epx;
 spx = 20; // espace trous fixation  
+spx = 15;
 
 rpiv = 4.4; // axe rotate en alu 
 pivz = 14; // hauteur axe rotate en alu 
@@ -136,12 +140,12 @@ module stopgond() {
 	
 
 rotate([90,0,0]){
-	//berceau();
-	//couv();
-	//stopgond();
+	berceau();
+	couv();
+	stopgond();
 }
 
-rotate([0,-90,0]) stopgond();
+//rotate([0,-90,0]) stopgond();
 
 
 
