@@ -42,11 +42,11 @@ mirror([1,0,0]) difference(){
 	
 		// vis
 		
-		translate([spt/2,0,-1]) cylinder(r=1.7, h=10, $fn=12);
-		translate([spt/2,0,ep]) cylinder(r=3.5, h=3, $fn=12);
+		translate([0,spt/2,-1]) cylinder(r=1.7, h=10, $fn=12);
+		translate([0,spt/2,ep]) cylinder(r=3.5, h=3, $fn=12);
 	
-		translate([-spt/2,0,-1]) cylinder(r=1.7, h=10, $fn=12);
-		translate([-spt/2,0,ep]) cylinder(r=3.5, h=3, $fn=12);
+		translate([0,-spt/2,-1]) cylinder(r=1.7, h=10, $fn=12);
+		translate([0,-spt/2,ep]) cylinder(r=3.5, h=20, $fn=12);
 		
 		//
         rvoisin = 4+4; // seringue 23
