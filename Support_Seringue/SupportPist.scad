@@ -36,8 +36,8 @@ mirror([1,0,0]) difference(){
 		translate([0,30,ep+2+10]) rotate([0,0,-16]) cube([60,60,20], center=true);
         // nervure
         hull(){
-            translate([0,0,ep+2]) cylinder(r=1.5, h=20, $fn=4*4);
-            translate([0,-rpis-j,ep+2]) cylinder(r=1.5, h=20, $fn=4*4);
+            translate([0,0,ep+2]) cylinder(r=1.5, h=20, $fn=3*4);
+            translate([0,-rpis-j,ep+2]) cylinder(r=1.5, h=20, $fn=3*4);
         }
 	
 		// vis
